@@ -25,7 +25,7 @@ export default function Spinner({ on }) {
   if (!on) return null
   return (
     <StyledSpinner id="spinner">
-      <h3>&nbsp;.</h3>&nbsp;&nbsp;&nbsp;Please wait...
+      <h3>&nbsp;.</h3>&nbsp;&nbsp;&nbsp;Loading...
     </StyledSpinner>
   )
 }
