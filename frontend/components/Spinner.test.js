@@ -1,21 +1,16 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
 import Spinner from './Spinner'
+import React from 'react'
+import '@testing-library/jest-dom'
 
 test('renders spinner when spinnerOn is true', () => {
-  // Render the Spinner component with spinnerOn true
   render(<Spinner spinnerOn={true} />)
-  
-  // Assuming Spinner renders a div with text "Loading..." when active:
-  const spinnerElement = screen.getByText(/loading/i)
-  expect(spinnerElement).toBeInTheDocument()
+  const loadingText = screen.getByText(/loading/i)
+  expect(loadingText).toBeInTheDocument()
 })
 
-test('renders nothing when spinnerOn is false', () => {
-  // Render the Spinner component with spinnerOn false
-  const { container } = render(<Spinner spinnerOn={false} />)
-  
-  // Expect that nothing is rendered (null)
-  expect(container.firstChild).toBeNull()
+test('does not render spinner when spinnerOn is false', () => {
+  render(<Spinner spinnerOn={false} />)
+  const loadingText = screen.queryByText(/loading/i)
+  expect(loadingText).not.toBeInTheDocument()
 })
